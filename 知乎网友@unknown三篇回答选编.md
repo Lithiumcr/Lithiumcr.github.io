@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # 知乎网友@unknown三篇回答选编
 
 [TOC]

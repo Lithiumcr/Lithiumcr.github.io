@@ -1,10 +1,14 @@
-theme: jekyll-theme-slate
-remote_theme: pages-themes/slate@v0.2.0
+theme: jekyll-theme-hamilton
+remote_theme: ngzhio/jekyll-theme-hamilton
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 title: "北辕记"
 description: "施工中，测试"
 
-show_downloads: "false"
+# show_downloads: "false"
+# disqus: 
 # google_analytics: ?
+
+lang: "cn"
+date_format: "%Y-%b-%-d"
