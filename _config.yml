@@ -9,5 +9,10 @@ description: "施工中，测试"
 #disqus: 
 google_analytics: G-0L0ZF5WQD7
 
+# Optional Parameters
+avatar: "北辕司机"
+#email: 
+#location: 
+#skin: 
 lang: "cn"
 date_format: "%Y-%b-%-d"
