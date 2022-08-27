@@ -1,14 +1,13 @@
-theme: jekyll-theme-hamilton
-remote_theme: ngzhio/jekyll-theme-hamilton
+#theme: jekyll-theme-hamilton
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+remote_theme: ngzhio/jekyll-theme-hamilton
 
 title: "北辕记"
 description: "施工中，测试"
-
 # show_downloads: "false"
-# disqus: 
-# google_analytics: ?
+#disqus: 
+google_analytics: G-0L0ZF5WQD7
 
 lang: "cn"
 date_format: "%Y-%b-%-d"
