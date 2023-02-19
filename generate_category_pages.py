@@ -3,12 +3,10 @@ import glob
 import yaml
 import shutil
 
-
 POSTS_PATH = '_posts'
 
 CATEGORIES_PATH = 'category'
 CATEGORY_LAYOUT = 'category'
-
 
 def get_front_matter(path):
     end = False
