@@ -10,9 +10,18 @@ description: "施工中，测试"
 google_analytics: G-0L0ZF5WQD7
 
 # Optional Parameters
+author: "北辕司机"
 avatar: "北辕司机"
 #email: 
-#location: 
+location: "stray"
 #skin: 
 lang: "cn"
 date_format: "%Y-%b-%-d"
+subscribe: false
+
+# Jekyll
+# ======
+exclude:
+  - scripts/
+  - README.md
+  - jekyll-theme-hamilton.gemspec
