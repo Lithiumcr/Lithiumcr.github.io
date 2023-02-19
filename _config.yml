@@ -27,9 +27,30 @@ categories:
   - 搬运旧闻-政治历史
   - 搬运旧闻-学术杂谈
 
+nav:
+- name: Home
+  link: /
+- name: About
+  link: /about.html
+
+# 以下嵌入页面，page.url以 "/" 开头
+<nav>
+  {% for item in site.nav %}
+    <a href="{{ item.link }}" 
+      {% if page.url == item.link %} style="color: red;" {% endif %}
+    >
+      {{ item.name }}
+    </a>
+  {% endfor %}
+</nav>
+
 # Jekyll
 # ======
 exclude:
   - scripts/
   - README.md
   - jekyll-theme-hamilton.gemspec
+
+  # 每一页显示的文章数
+paginate: 5
+paginate_path: "page:num"
