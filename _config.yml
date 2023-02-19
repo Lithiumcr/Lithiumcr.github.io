@@ -19,6 +19,14 @@ lang: "cn"
 date_format: "%Y-%b-%-d"
 subscribe: false
 
+#分类
+categories:
+  - 司机行记
+  - 游戏与怪谈
+  - 搬运旧闻-经济金融
+  - 搬运旧闻-政治历史
+  - 搬运旧闻-学术杂谈
+
 # Jekyll
 # ======
 exclude:

@@ -1,3 +1,21 @@
 ---
 layout: home
 ---
+
+<html>
+<head>
+<title>北辕记</title>
+</head>
+<body>
+<div>
+  <h1>北辕记</h1>
+  <h2>博文分类</h2>
+  <ul>
+    <!--<li><a href="./_posts/司机行记/">司机行记</a></li>-->
+    {% for category in site.categories %}
+    <li><a href="/{{ category | first }}/">{{ category | first }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+</body>
+</html>
