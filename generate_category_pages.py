@@ -4,14 +4,13 @@ import yaml
 import shutil
 
 POSTS_PATH = '_posts'
-
 CATEGORIES_PATH = 'category'
 CATEGORY_LAYOUT = 'category'
 
 def get_front_matter(path):
     end = False
     front_matter = ""
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         for line in f.readlines():
             if line.strip() == '---':
                 if end:
@@ -27,8 +26,8 @@ def get_front_matter(path):
 def get_categories():
     all_categories = []
 
-    for file in glob.glob(os.path.join(POSTS_PATH, '*.md')):
-        meta = yaml.load(get_front_matter(file))
+    for file in glob.glob(os.path.join(POSTS_PATH, '**/*.md')):
+        meta = yaml.safe_load(get_front_matter(file))
         try:
             category = meta['category']
         except KeyError:
@@ -64,6 +63,7 @@ def get_categories():
 
 def generate_category_pages():
     categories = get_categories()
+    print(categories)
     if os.path.exists(CATEGORIES_PATH):
         shutil.rmtree(CATEGORIES_PATH)
 
@@ -71,7 +71,7 @@ def generate_category_pages():
 
     for category in categories:
         new_page = CATEGORIES_PATH + '/' + category + '.html'
-        with open(new_page, 'w+') as html:
+        with open(new_page, 'w+', encoding='utf-8') as html:
             html.write("---\n")
             html.write("layout: {}\n".format(CATEGORY_LAYOUT))
             html.write("title: {}\n".format(category.title()))
