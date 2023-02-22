@@ -1,9 +1,5 @@
 #theme: jekyll-theme-hamilton
 plugins:
-  - jekyll-seo-tag
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-paginate
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 remote_theme: ngzhio/jekyll-theme-hamilton
 
@@ -20,7 +16,7 @@ avatar: /logo.png
 location: "stray"
 #skin: 
 lang: "cn"
-date_format: "%Y-%b-%-d"
+date_format: "%Y-%B-%-d"
 subscribe: false
 
 #分类
