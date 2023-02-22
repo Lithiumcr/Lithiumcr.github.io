@@ -11,12 +11,13 @@ google_analytics: G-0L0ZF5WQD7
 
 # Optional Parameters
 author: "北辕司机"
-avatar: /logo.png
+avatar: /image/logo.png
 #email: 
 location: "stray"
 #skin: 
 lang: "cn"
-date_format: "%Y-%B-%-d"
+time-zone: GMT+8
+date_format: yyyy-MM-dd
 subscribe: false
 
 #分类

@@ -13,7 +13,7 @@ layout: home
   <ul>
     <!--<li><a href="./_posts/司机行记/">司机行记</a></li>-->
     {% for category in site.categories %}
-    <li><a href="/{{ category | first }}/">{{ category | first }}</a></li>
+    <li><a href="/categories/#{{ category | first }}/">{{ category | first }}</a></li>
     {% endfor %}
   </ul>
 </div>
