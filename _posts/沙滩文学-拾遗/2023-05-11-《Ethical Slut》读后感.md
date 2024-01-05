@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 《道德浪女》
-category: 游戏与怪谈
-author: 北辕司机
+category: 沙滩文学-拾遗
+author: 星桥
 ---
 
 > 《Ethical Slut》張娟芬繁体中文译本。
