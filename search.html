@@ -1,0 +1,129 @@
+---
+layout: page
+title: 站内搜索
+permalink: /search/
+---
+
+<style>
+  #search-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  .search-result-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .search-result-title {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .search-result-title a {
+    text-decoration: none;
+    color: #2a7ae2;
+  }
+  .search-result-title a:hover {
+    text-decoration: underline;
+  }
+  .search-result-date {
+    font-size: 0.9em;
+    color: #828282;
+    margin-bottom: 5px;
+  }
+  .search-result-snippet {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+  }
+  mark {
+    background-color: #fff8c5;
+    padding: 0 2px;
+  }
+</style>
+
+<div class="search-box">
+  <input type="text" id="search-input" placeholder="输入关键词即可搜索文章..." autocomplete="off">
+</div>
+
+<div id="search-results"></div>
+
+<script>
+  let posts = [];
+
+  // Fetch the JSON data
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(response => response.json())
+    .then(data => {
+      posts = data;
+    })
+    .catch(error => console.error('Error fetching search data:', error));
+
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    
+    if (query.length === 0) {
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    const filteredPosts = posts.filter(post => {
+      const title = post.title ? post.title.toLowerCase() : '';
+      const content = post.content ? post.content.toLowerCase() : '';
+      return title.includes(query) || content.includes(query);
+    });
+
+    displayResults(filteredPosts, query);
+  });
+
+  function displayResults(results, query) {
+    if (results.length === 0) {
+      searchResults.innerHTML = '<p>没有找到相关文章。</p>';
+      return;
+    }
+
+    const html = results.map(post => {
+      // Create a snippet
+      let snippet = '';
+      if (post.content) {
+        // Find the position of the query
+        const contentLower = post.content.toLowerCase();
+        let index = contentLower.indexOf(query);
+        
+        // If query not found in content (matched in title), show beginning
+        if (index === -1) index = 0;
+
+        const start = Math.max(0, index - 50);
+        const end = Math.min(post.content.length, index + 150);
+        snippet = post.content.substring(start, end);
+        
+        if (start > 0) snippet = '...' + snippet;
+        if (end < post.content.length) snippet = snippet + '...';
+
+        // Highlight
+        const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+        snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
+      }
+
+      return `
+        <div class="search-result-item">
+          <div class="search-result-title">
+            <a href="${post.url}">${post.title}</a>
+          </div>
+          <div class="search-result-date">${post.date}</div>
+          <div class="search-result-snippet">${snippet}</div>
+        </div>
+      `;
+    }).join('');
+
+    searchResults.innerHTML = html;
+  }
+</script>
