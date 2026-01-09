@@ -89,36 +89,56 @@ permalink: /search/
       searchResults.innerHTML = '<p>没有找到相关文章。</p>';
       return;
     }
+    // Helper to escape HTML to prevent XSS when inserting into innerHTML
+    function escapeHtml(str) {
+      if (!str && str !== 0) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Prebuild the regex once for performance and correctness
+    const regex = new RegExp(query.replace(/[.*+?^${}()|[\\]\\]/g, '\\\\$&'), 'gi');
 
     const html = results.map(post => {
       // Create a snippet
       let snippet = '';
       if (post.content) {
-        // Find the position of the query
+        // Find the position of the query (case-insensitive via lowercased copy)
         const contentLower = post.content.toLowerCase();
         let index = contentLower.indexOf(query);
-        
+
         // If query not found in content (matched in title), show beginning
         if (index === -1) index = 0;
 
         const start = Math.max(0, index - 50);
         const end = Math.min(post.content.length, index + 150);
         snippet = post.content.substring(start, end);
-        
+
         if (start > 0) snippet = '...' + snippet;
         if (end < post.content.length) snippet = snippet + '...';
 
-        // Highlight
-        const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-        snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
+        // Escape the snippet to neutralize any HTML present in the post content
+        const safeSnippet = escapeHtml(snippet);
+
+        // Highlight matches on the escaped snippet (regex is case-insensitive)
+        snippet = safeSnippet.replace(regex, match => `<mark>${match}</mark>`);
       }
+
+      // Escape title/date/url before inserting into HTML
+      const safeTitle = escapeHtml(post.title || '');
+      const safeDate = escapeHtml(post.date || '');
+      const safeUrl = escapeHtml(post.url || '#');
 
       return `
         <div class="search-result-item">
           <div class="search-result-title">
-            <a href="${post.url}">${post.title}</a>
+            <a href="${safeUrl}">${safeTitle}</a>
           </div>
-          <div class="search-result-date">${post.date}</div>
+          <div class="search-result-date">${safeDate}</div>
           <div class="search-result-snippet">${snippet}</div>
         </div>
       `;
