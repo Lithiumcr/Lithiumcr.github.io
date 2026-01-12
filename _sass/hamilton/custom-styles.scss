@@ -16,19 +16,12 @@
 // 模糊遮挡效果
 .blur-text {
   filter: blur(5px);
-  transition: filter 0.3s ease, opacity 0.3s ease;
+  transition: filter 0.5s;
   cursor: pointer;
   user-select: none; /* 防止模糊时被选中复制 */
-  opacity: 0.8;
   
-  &:hover {
-    filter: blur(1px);
-    opacity: 0.9;
-  }
-  
-  &:active, &.revealed {
+  &:hover, &:active {
     filter: none;
-    opacity: 1;
     user-select: text;
   }
 }
