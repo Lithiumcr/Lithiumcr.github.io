@@ -9,6 +9,11 @@ url: "https://lithiumcr.github.io"
 description: "施工中，测试"
 # show_downloads: "false"
 #disqus: 
+utterances:
+ repo: Lithiumcr/Lithiumcr.github.io
+ issue_term: pathname # 映射方式
+ label: Comment # (可选) Issue 标签
+ theme: github-light # 主题
 google_analytics: G-0L0ZF5WQD7
 
 # Optional Parameters

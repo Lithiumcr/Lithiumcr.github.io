@@ -89,5 +89,9 @@ layout: default
   {% if page.comments != false and jekyll.environment == "production" and site.disqus %}
     {% include disqus.html %}
   {% endif %}
+
+  {% if page.comments != false and site.utterances.repo %}
+    {% include utterances.html %}
+  {% endif %}
   
 </article>
