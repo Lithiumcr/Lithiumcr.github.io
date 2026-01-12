@@ -1,1 +1,34 @@
 // Placeholder to allow customizing styles.
+
+// 萌娘百科风格黑幕
+.heimu {
+  background-color: #252525;
+  color: #252525;
+  text-shadow: none;
+  transition: color 0.13s linear;
+  padding: 0 2px;
+  
+  &:hover, &:active {
+    color: #fff;
+  }
+}
+
+// 模糊遮挡效果
+.blur-text {
+  filter: blur(5px);
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  user-select: none; /* 防止模糊时被选中复制 */
+  opacity: 0.8;
+  
+  &:hover {
+    filter: blur(1px);
+    opacity: 0.9;
+  }
+  
+  &:active, &.revealed {
+    filter: none;
+    opacity: 1;
+    user-select: text;
+  }
+}

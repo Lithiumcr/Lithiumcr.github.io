@@ -26,6 +26,6 @@ RSS（Really Simple Syndication）是一种网页内容订阅格式。通过 RSS
 *   **Android**: [ReadYou](https://github.com/Ashinch/ReadYou) (Material Design 风格，开源)
 *   **Windows**: [Fluent Reader](https://github.com/yang991178/fluent-reader)
 *   **跨平台/Web**: [Feedly](https://feedly.com/), [Inoreader](https://www.inoreader.com/)
-*   **Linux**: 认真的吗？Linux用户也想从我这里了解推荐工具？ <span style="filter: blur(5px); transition: filter 0.5s; cursor: pointer;" onclick="this.style.filter='none'" title="点击查看（如果你坚持的话）">其实也有：<a href="https://gitlab.com/news-flash/news_flash_gtk">NewsFlash</a> (现代 GTK 界面), <a href="https://apps.kde.org/akregator/">Akregator</a> (KDE), <a href="https://newsboat.org/">Newsboat</a> (CLI)</span>
+*   **Linux**: 认真的吗？Linux用户也想从我这里了解推荐工具？<span class="blur-text">当然，其实也有：<a href="https://gitlab.com/news-flash/news_flash_gtk">NewsFlash</a> (现代 GTK 界面), <a href="https://apps.kde.org/akregator/">Akregator</a> (KDE), <a href="https://newsboat.org/">Newsboat</a> (CLI)</span>
 
 当然，您也可以随意使用自己喜欢的其他工具。
