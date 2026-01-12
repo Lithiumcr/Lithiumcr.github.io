@@ -1,9 +1,11 @@
 #theme: jekyll-theme-hamilton
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+- jekyll-feed
 remote_theme: ngzhio/jekyll-theme-hamilton
 
 title: "北辕记"
+url: "https://lithiumcr.github.io"
 description: "施工中，测试"
 # show_downloads: "false"
 #disqus: 
@@ -18,7 +20,7 @@ location: "stray"
 lang: "cn"
 time-zone: GMT+8
 date_format: "%Y-%m-%-d"
-subscribe: false
+subscribe: true
 
 #分类
 categories:

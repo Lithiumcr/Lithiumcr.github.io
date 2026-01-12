@@ -1,3 +1,5 @@
-#source "https://gems-china.org"
+source "https://rubygems.org"
 
-jekyll-theme-hamilton
+gem "jekyll"
+gem "jekyll-feed"
+gem "jekyll-remote-theme"
