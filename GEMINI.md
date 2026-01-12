@@ -131,10 +131,10 @@ Site navigation is configured in `_data/navigation.yml` and includes:
 
 ## TODO Items
 
-- [ ] Add custom CSS styling if needed
 - [x] Configure RSS feed if not already present
+- [x] RSS tutorial page for normal new reader
 - [ ] Set up proper SEO meta tags
 - [x] Add search functionality
-- [ ] Implement comment system (Disqus is commented out in config)
+- [x] Implement comment system (utterances)
 
 This GEMINI.md file provides the essential context for working with this Jekyll-based personal blog project.
