@@ -6,23 +6,21 @@ layout: home
   <h1>北辕记</h1>
 
   <section class="recent-posts">
-    <h2>📅 最近更新</h2>
+    <h2>最近更新</h2>
     <ul class="post-list">
-      {% for post in site.posts limit:10 %}
+      {% for post in site.posts limit:3 %}
       <li class="post-item">
         <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        {% if post.category %}
         <span class="post-category">#{{ post.category }}</span>
-        {% endif %}
       </li>
       {% endfor %}
     </ul>
-    <p class="view-more"><a href="{{ '/years/' | relative_url }}">查看时间归档 →</a></p>
+    <p class="view-more"><a href="{{ '/years/' | relative_url }}">更多 →</a></p>
   </section>
 
   <section class="categories-section">
-    <h2>📚 博文分类</h2>
+    <h2>博文分类</h2>
     <ul class="category-list">
       {% for category in site.categories %}
       <li><a href="/categories/#{{ category | first }}/">{{ category | first }}</a></li>
