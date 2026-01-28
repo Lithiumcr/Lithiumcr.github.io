@@ -27,4 +27,27 @@ layout: home
       {% endfor %}
     </ul>
   </section>
+
+  {% if site.data.friends and site.data.friends.size > 0 %}
+  <section class="friends-section">
+    <h2>友情链接</h2>
+    <div class="friends-list">
+      {% for friend in site.data.friends %}
+      <div class="friend-card">
+        <a href="{{ friend.url }}" target="_blank" rel="noopener noreferrer" title="{{ friend.description }}">
+          {% if friend.imageUrl %}
+          <img src="{{ friend.imageUrl }}" alt="{{ friend.name }}" class="friend-avatar" loading="lazy">
+          {% endif %}
+          <div class="friend-info">
+            <span class="friend-name">{{ friend.name }}</span>
+            {% if friend.description %}
+            <span class="friend-desc">{{ friend.description }}</span>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 </div>

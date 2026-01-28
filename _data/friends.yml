@@ -1,0 +1,25 @@
+# 友情链接数据
+# Friend Links Data
+#
+# 格式说明 / Format:
+# - name: 博客名称 (Blog Name)
+#   url: 博客链接 (Blog URL, must start with https://)
+#   description: 一句话简介 (Brief description, 20-50 characters recommended)
+#   imageUrl: 头像链接 (Avatar URL, optional, square image 200x200px+ recommended)
+
+# 示例友链 / Example friend links
+- name: "西门美月匈XD"
+  url: "https://xmmxovo.online/"
+  description: "一定会成为一个很棒的大人！"
+  imageUrl: "https://xmmxovo.online/images/avatar.png"
+
+- name: "Yu Zhang"
+  url: "https://yuzhang.net/"
+  description: "An expert in doing nothing"
+  imageUrl: "https://cdn.jsdelivr.net/gh/yuzhangnju/image2022/image-20231113210216310.png"
+
+# 添加你的友链 / Add your friend links below:
+# - name: "Your Blog Name"
+#   url: "https://your-blog.com"
+#   description: "Your blog description"
+#   imageUrl: "https://your-blog.com/avatar.png"
