@@ -2,20 +2,31 @@
 layout: home
 ---
 
-<html>
-<head>
-<title>北辕记</title>
-</head>
-<body>
-<div>
+<div class="home-content">
   <h1>北辕记</h1>
-  <h2>博文分类</h2>
-  <ul>
-    <!--<li><a href="./_posts/司机行记/">司机行记</a></li>-->
-    {% for category in site.categories %}
-    <li><a href="/categories/#{{ category | first }}/">{{ category | first }}</a></li>
-    {% endfor %}
-  </ul>
+
+  <section class="recent-posts">
+    <h2>📅 最近更新</h2>
+    <ul class="post-list">
+      {% for post in site.posts limit:10 %}
+      <li class="post-item">
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        {% if post.category %}
+        <span class="post-category">#{{ post.category }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="view-more"><a href="{{ '/years/' | relative_url }}">查看时间归档 →</a></p>
+  </section>
+
+  <section class="categories-section">
+    <h2>📚 博文分类</h2>
+    <ul class="category-list">
+      {% for category in site.categories %}
+      <li><a href="/categories/#{{ category | first }}/">{{ category | first }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
 </div>
-</body>
-</html>

@@ -10,7 +10,7 @@
       <header class="site-header">
         {% include header.html %}
       </header>
-      
+
       <div class="site-body wrapper">
         <aside class="site-sidebar" id="site-sidebar">
           {% if page.toc %}
@@ -27,6 +27,8 @@
         </main>
       </div>
     </div>
+
+    {% include search-modal.html %}
   </body>
 
 </html>

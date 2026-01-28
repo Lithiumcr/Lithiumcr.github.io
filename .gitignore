@@ -5,3 +5,8 @@
 _site
 Gemfile.lock
 ./_drafts/*
+
+# AI 编程工具目录
+.claude/
+.codebuddy/
+openspec/

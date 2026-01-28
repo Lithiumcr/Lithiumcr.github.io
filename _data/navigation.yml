@@ -1,16 +1,8 @@
 - title: About
   url: /about/
-- title: Years
-  url: /years/
 - title: Categories
   url: /categories/
+- title: Years
+  url: /years/
 - title: Search
   url: /search/
-- title: Tags
-  url: /tags/
-- title: More
-  sublinks:
-    - title: FAQ
-      url: /faq/
-    - title: Docs
-      url: /docs/

@@ -34,7 +34,9 @@
       <ul class="trigger">
         {%- for nav in site.data.navigation -%}
           {%- if nav.title -%}
-            {% if nav.sublinks %}
+            {% if nav.title == "Search" %}
+              <li><a class="search-icon-button" onclick="openSearchModal()" title="搜索 (Ctrl+K)"><i class="fas fa-search"></i></a></li>
+            {% elsif nav.sublinks %}
               <li class="dropdown" href="#">
                 <a href="javascript:void(0)" class="dropbtn">{{ nav.title | escape }}</a>
                 <div class="dropdown-content">
