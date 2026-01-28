@@ -1,5 +1,36 @@
 // Placeholder to allow customizing styles.
 
+// ========================================
+// CSS 变量定义：自动适配亮色/暗色模式
+// ========================================
+:root {
+  // 亮色模式（默认，daylight/sunrise 皮肤）
+  --custom-heading-color: #111;      // 标题颜色（最深，最醒目）
+  --custom-text-color: #333;         // 主要文本颜色
+  --custom-text-medium: #555;        // 中等文本颜色
+  --custom-text-light: #666;         // 浅色文本（描述、辅助信息）
+  --custom-text-lighter: #828282;    // 更浅的文本（日期、页脚）
+  --custom-link-color: #2a7ae2;      // 链接颜色
+  --custom-border-light: #e8e8e8;    // 浅色边框
+  --custom-border-lighter: #f0f0f0;  // 更浅的边框
+  --custom-bg-card: #fff;            // 卡片背景
+}
+
+// 暗色模式（midnight 皮肤）
+@media (prefers-color-scheme: dark) {
+  :root {
+    --custom-heading-color: #f0f0f0;    // 标题颜色（浅色，在深色背景上清晰）
+    --custom-text-color: #d0d0d0;       // 主要文本颜色
+    --custom-text-medium: #b0b0b0;      // 中等文本颜色
+    --custom-text-light: #999;          // 浅色文本
+    --custom-text-lighter: #888;        // 更浅的文本
+    --custom-link-color: #00b1c9;       // 链接颜色（青色，与 midnight 一致）
+    --custom-border-light: #333;        // 深色边框
+    --custom-border-lighter: #444;      // 更深的边框
+    --custom-bg-card: #1e1e1e;          // 卡片背景（比主背景稍亮）
+  }
+}
+
 // 萌娘百科风格黑幕
 .heimu {
   background-color: #252525;
@@ -43,7 +74,7 @@
   h2 {
     font-size: 1.2em;
     margin-bottom: 0.8em;
-    color: #333;
+    color: var(--custom-heading-color);  // 使用 CSS 变量，自动适配亮/暗色
   }
 }
 
@@ -61,7 +92,7 @@
 
   a {
     text-decoration: none;
-    color: #2a7ae2;
+    color: var(--custom-link-color);  // 链接颜色自动适配
 
     &:hover {
       text-decoration: underline;
@@ -70,13 +101,13 @@
 }
 
 .post-date {
-  color: #828282;
+  color: var(--custom-text-lighter);  // 日期使用更浅的颜色
   font-size: 0.9em;
   margin-right: 0.5em;
 }
 
 .post-category {
-  color: #999;
+  color: var(--custom-text-light);  // 分类标签使用浅色
   font-size: 0.85em;
   margin-left: 0.3em;
 }
@@ -85,12 +116,12 @@
   margin-top: 0.5em;
 
   a {
-    color: #828282;
+    color: var(--custom-text-lighter);  // "查看更多"链接
     text-decoration: none;
     font-size: 0.9em;
 
     &:hover {
-      color: #2a7ae2;
+      color: var(--custom-link-color);  // 悬停时变为链接颜色
     }
   }
 }
@@ -107,10 +138,10 @@
 
     a {
       text-decoration: none;
-      color: #555;
+      color: var(--custom-text-color);  // 分类列表链接使用主文本颜色
 
       &:hover {
-        color: #2a7ae2;
+        color: var(--custom-link-color);
       }
     }
   }
@@ -119,7 +150,7 @@
 // Footer
 .footer-content {
   text-align: center;
-  color: #828282;
+  color: var(--custom-text-lighter);  // 页脚使用浅色文本
   font-size: 0.85em;
 
   p {
@@ -127,11 +158,11 @@
   }
 
   a {
-    color: #828282;
+    color: var(--custom-text-lighter);
     text-decoration: none;
 
     &:hover {
-      color: #2a7ae2;
+      color: var(--custom-link-color);
     }
   }
 }
@@ -140,12 +171,12 @@
 .friends-section {
   margin-top: 3em;
   padding-top: 2em;
-  border-top: 1px solid #e8e8e8;
+  border-top: 1px solid var(--custom-border-light);  // 边框颜色自动适配
 
   h2 {
     font-size: 1.2em;
     margin-bottom: 1.2em;
-    color: #333;
+    color: var(--custom-heading-color);  // 友链标题使用标题颜色
     text-align: left;
   }
 }
@@ -162,16 +193,16 @@
 }
 
 .friend-card {
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--custom-border-light);  // 边框自动适配
   border-radius: 8px;
   transition: all 0.3s ease;
-  background: #fff;
+  background: var(--custom-bg-card);  // 卡片背景自动适配
   overflow: hidden;
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
-    border-color: #2a7ae2;
+    border-color: var(--custom-link-color);  // 悬停边框颜色
   }
 
   a {
@@ -180,8 +211,6 @@
     padding: 1em;
     text-decoration: none;
     color: inherit;
-    width: 100%;
-    height: 100%;
   }
 
   .friend-avatar {
@@ -191,12 +220,12 @@
     object-fit: cover;
     margin-right: 1em;
     flex-shrink: 0;
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--custom-border-lighter);  // 头像边框
     transition: border-color 0.3s ease;
   }
 
   &:hover .friend-avatar {
-    border-color: #2a7ae2;
+    border-color: var(--custom-link-color);
   }
 
   .friend-info {
@@ -210,7 +239,7 @@
   .friend-name {
     font-weight: 600;
     font-size: 1em;
-    color: #333;
+    color: var(--custom-heading-color);  // 友链名称使用标题颜色（醒目）
     margin-bottom: 0.3em;
     white-space: nowrap;
     overflow: hidden;
@@ -219,7 +248,7 @@
 
   .friend-desc {
     font-size: 0.85em;
-    color: #666;
+    color: var(--custom-text-light);  // 友链描述使用浅色
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -229,6 +258,6 @@
   }
 
   &:hover .friend-name {
-    color: #2a7ae2;
+    color: var(--custom-link-color);  // 悬停时变为链接颜色
   }
 }
