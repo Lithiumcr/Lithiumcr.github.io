@@ -64,13 +64,6 @@ permalink: /friends-apply/
 
 如果您希望添加本站友链，请使用以下信息：
 
-> **博客名称：** 北辕记
-> **博客地址：** [https://lithiumcr.github.io](https://lithiumcr.github.io)
-> **博客简介：** 北辕司机的个人博客，记录思考、诗歌、还有一路向北的歧途风光
-> **头像链接：** [https://lithiumcr.github.io/image/avatar.jpg](https://lithiumcr.github.io/image/avatar.jpg)
-
-YAML 格式：
-
 ```yaml
 - name: "北辕记"
   url: "https://lithiumcr.github.io"
