@@ -13,6 +13,11 @@
   description: "一定会成为一个很棒的大人！"
   imageUrl: "https://xmmxovo.online/images/avatar.png"
 
+- name: "TorchMar's Blog"
+  url: "https://torchmar.github.io/"
+  description: "Always exploring, always learning."
+  imageUrl: "https://torchmar.github.io/images/Ray.jpg"
+
 - name: "Yu Zhang"
   url: "https://yuzhang.net/"
   description: "An expert in doing nothing"
