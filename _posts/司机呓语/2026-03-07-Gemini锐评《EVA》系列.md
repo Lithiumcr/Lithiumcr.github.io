@@ -6,6 +6,8 @@ author: 北辕司机
 toc: true
 ---
 
+**Gemini-3-Flash, free tier, Thinking**
+
 ##### August说：
 
 有人说“当下的心理学是丢弃了黑格尔遗产的，它其实也不配讲什么科学”是什么意思，是否合理
