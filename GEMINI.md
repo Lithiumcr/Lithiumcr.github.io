@@ -6,9 +6,9 @@ Beiyuanji (北辕记) is a Chinese-language intellectual blog migrated from Jeky
 
 - **Authoritative plan**: `workplan.md`
 - **Site URL**: `https://lithiumcr.github.io/`
-- **Old local repo**: `/Users/administrator/work/Lithiumcr.github.io/`
-- **New local repo**: `/Users/administrator/work/beiyuanji-hugo/`
-- **Current posture**: Phase 2 core, Phase 3, Phase 4, Phase 5 JSON search/RSS, Phase 6 structure/visual system, and Phase 7 core are implemented locally. Remote/deployed search/RSS acceptance remains pending.
+- **Repository**: `/Users/administrator/work/Lithiumcr.github.io/`
+- **Source archive / staging reference**: `/Users/administrator/work/beiyuanji-hugo/`
+- **Current posture**: the first Hugo cutover is complete. `master` contains Hugo source, GitHub Pages uses the Actions workflow deployment path, and deployed smoke tests for home, search, RSS, subscribe, cite, representative article pages, and a CJK legacy alias have passed.
 - **Display typography**: homepage hero title uses a self-hosted Liu Jian Mao Cao / 刘建毛草 subset font at `static/fonts/liu-jian-mao-cao-hero-subset.ttf`; update the subset when title/axiom text introduces new Chinese characters.
 
 If this file conflicts with `workplan.md`, follow `workplan.md`.
