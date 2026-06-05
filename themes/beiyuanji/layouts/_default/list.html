@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <div class="page-header">
+    <h1>{{ .Title }}</h1>
+  </div>
+  {{ .Content }}
+  {{ $pages := .Pages }}
+  {{ if $pages }}
+    <ul class="post-list">
+      {{ range $pages.ByDate.Reverse }}
+        <li class="post-list-item">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <div class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          </div>
+          {{ with .Params.summary }}
+            <div class="post-summary">{{ . }}</div>
+          {{ else }}
+            {{ with .Summary }}
+              <div class="post-summary">{{ . | plainify | truncate 150 }}</div>
+            {{ end }}
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}

@@ -1,0 +1,142 @@
+{{ define "main" }}
+  {{ $articles := where site.RegularPages "Type" "in" (slice "essay" "archive" "dialogue" "note") }}
+  {{ $archives := where site.RegularPages "Type" "archive" }}
+  {{ $featured := first 3 (where site.RegularPages ".Params.featured" true) }}
+  {{ $recent := first 8 ($articles.ByDate.Reverse) }}
+  {{ $topicCount := len site.Taxonomies.topics }}
+
+  <section class="home-hero">
+    <div class="container">
+      <div class="hero__badge">北辕记 · Beiyuanji</div>
+      <h1 class="hero__title">北辕而行 记其所见</h1>
+      <div class="hero__desc">
+        {{ .Content }}
+      </div>
+      <div class="hero__actions">
+        <a href="/essay/" class="btn btn--primary">开始阅读</a>
+        <a href="/topics/" class="btn btn--secondary">浏览专题</a>
+      </div>
+      <div class="hero__stats" aria-label="站点内容概览">
+        <div class="stat">
+          <div class="stat__num">{{ len $articles }}</div>
+          <div class="stat__label">篇文章</div>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <div class="stat__num">{{ $topicCount }}</div>
+          <div class="stat__label">个专题</div>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <div class="stat__num">{{ len $archives }}</div>
+          <div class="stat__label">则旧闻辑录</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__axiom">
+      <div class="container">
+        <span class="axiom-label">PURSUIT</span>
+        <span class="axiom-text">旧学新声，贯通中西；以个人经验照见时代褶皱。</span>
+      </div>
+    </div>
+  </section>
+
+  {{ if $featured }}
+  <section class="section">
+    <div class="container">
+      <p class="section-title">Featured Works</p>
+      <h2 class="section-heading">代表作</h2>
+      <p class="section-desc-large">飘飘何所似，天地一沙鸥</p>
+      <div class="featured-grid">
+        {{ range $featured }}
+          <a href="{{ .RelPermalink }}" class="feature-card">
+            <div class="feature-card__meta">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+              {{ with .Params.topics }}<span>{{ index . 0 }}</span>{{ end }}
+            </div>
+            <h3 class="feature-card__title">{{ .Title }}</h3>
+            {{ with .Params.summary }}
+              <p class="feature-card__desc">{{ . }}</p>
+            {{ else }}
+              <p class="feature-card__desc">{{ .Summary | plainify | truncate 120 }}</p>
+            {{ end }}
+            <span class="feature-card__arrow">阅读全文 →</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with site.Taxonomies.topics }}
+  <section class="section section--alt">
+    <div class="container">
+      <p class="section-title">Topics</p>
+      <h2 class="section-heading">专题入口</h2>
+      <p class="section-desc-large">以问题意识组织文章……</p>
+      <div class="topic-grid">
+        {{ range $name, $pages := . }}
+          <a href="{{ printf "/topics/%s/" $name | relURL }}" class="topic-card">
+            <span class="topic-name">{{ $name }}</span>
+            <span class="topic-count">{{ len $pages }} 篇</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="section">
+    <div class="container">
+      <p class="section-title">Sections</p>
+      <h2 class="section-heading">内容分区</h2>
+      <p class="section-desc-large">原创写作归入《随笔》；转录、摘编、史料整理等归入《旧闻》。</p>
+      <div class="section-grid section-grid--compact">
+        <a href="/essay/" class="section-card">
+          <span class="section-card__label">Essay</span>
+          <span class="section-name">随笔</span>
+          <span class="section-desc">评论、长文、游记、自省与文艺札记</span>
+        </a>
+        <a href="/archive/" class="section-card">
+          <span class="section-card__label">Archive</span>
+          <span class="section-name">旧闻</span>
+          <span class="section-desc">转载、摘编、访谈与史料整理</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{ if $recent }}
+  <section class="section section--alt">
+    <div class="container">
+      <p class="section-title">Recent Updates</p>
+      <h2 class="section-heading">近期更新</h2>
+      <div class="recent-list">
+        {{ range $recent }}
+          <a href="{{ .RelPermalink }}" class="recent-item">
+            <div class="recent-item__date">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            </div>
+            <div class="recent-item__body">
+              <h3>{{ .Title }}</h3>
+              {{ with .Params.topics }}<p>{{ index . 0 }}</p>{{ end }}
+            </div>
+            <span class="recent-item__arrow">→</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="subscribe-panel">
+        <p class="section-title">Subscribe</p>
+        <h2>通过 RSS 跟踪更新</h2>
+        <p>保持一个低噪音、可长期归档的阅读入口。</p>
+        <a href="/index.xml" class="btn btn--light">订阅 RSS</a>
+      </div>
+    </div>
+  </section>
+{{ end }}

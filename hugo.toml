@@ -1,0 +1,72 @@
+baseURL = 'https://lithiumcr.github.io/'
+title = '北辕记'
+locale = 'zh-CN'
+timeZone = 'Asia/Shanghai'
+theme = 'beiyuanji'
+
+# Pagination
+paginate = 20
+
+# Summaries
+summaryLength = 120
+hasCJKLanguage = true
+
+# Taxonomies
+[taxonomies]
+  topic = 'topics'
+  series = 'series'
+  person = 'people'
+  keyword = 'keywords'
+
+# Menu
+[menus]
+  [[menus.main]]
+    name = '首页'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    name = '随笔'
+    pageRef = '/essay/'
+    weight = 20
+  [[menus.main]]
+    name = '旧闻'
+    pageRef = '/archive/'
+    weight = 30
+  [[menus.main]]
+    name = '专题'
+    pageRef = '/topics/'
+    weight = 40
+  [[menus.main]]
+    name = '订阅'
+    pageRef = '/subscribe/'
+    weight = 80
+  [[menus.main]]
+    name = '搜索'
+    pageRef = '/search/'
+    weight = 90
+
+[outputFormats.SearchIndex]
+  mediaType = 'application/json'
+  baseName = 'search'
+  isPlainText = true
+  notAlternative = true
+
+# Markup
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.cjk]
+        enable = true
+        eastAsianLineBreaks = true
+        escapedSpace = true
+  [markup.highlight]
+    noClasses = false
+
+# Build output
+[outputs]
+  home = ['html', 'rss', 'SearchIndex']
+  section = ['html', 'rss']
+  taxonomy = ['html']
+  term = ['html']

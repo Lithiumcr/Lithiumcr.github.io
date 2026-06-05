@@ -1,140 +1,65 @@
-# GEMINI.md - Lithiumcr.github.io
+# Beiyuanji Hugo Migration
 
 ## Project Overview
 
-This is a **Jekyll-based personal blog/website** hosted on GitHub Pages. The site is titled "北辕记" (Northern Journey Notes) and serves as a personal blog featuring various categories of content including travel notes, game reviews, economic/financial commentary, political/historical analysis, academic discussions, and literary works.
+Beiyuanji (北辕记) is a Chinese-language intellectual blog migrated from Jekyll to Hugo.
 
-**Key Technologies:**
-- **Jekyll** - Static site generator
-- **Hamilton Theme** - Remote theme from ngzhio/jekyll-theme-hamilton
-- **GitHub Pages** - Hosting platform
-- **Markdown** - Content format
+- **Authoritative plan**: `workplan.md`
+- **Site URL**: `https://lithiumcr.github.io/`
+- **Old local repo**: `/Users/administrator/work/Lithiumcr.github.io/`
+- **New local repo**: `/Users/administrator/work/beiyuanji-hugo/`
+- **Current posture**: Phase 2 core, Phase 3, Phase 4, Phase 5 JSON search/RSS, Phase 6 structure/visual system, and Phase 7 core are implemented locally. Remote/deployed search/RSS acceptance remains pending.
+- **Display typography**: homepage hero title uses a self-hosted Liu Jian Mao Cao / 刘建毛草 subset font at `static/fonts/liu-jian-mao-cao-hero-subset.ttf`; update the subset when title/axiom text introduces new Chinese characters.
 
-## Project Structure
+If this file conflicts with `workplan.md`, follow `workplan.md`.
 
-```
-├── _config.yml          # Jekyll configuration
-├── Gemfile              # Ruby gem dependencies
-├── index.html           # Homepage
-├── _posts/              # Blog posts organized by category
-│   ├── 司机行记/        # Travel notes
-│   ├── 游戏与怪谈/      # Games and strange tales
-│   ├── 搬运旧闻-经济金融/ # Economic/financial content
-│   ├── 搬运旧闻-政治历史/ # Political/historical content
-│   ├── 搬运旧闻-学术杂谈/ # Academic discussions
-│   ├── 沙滩文学-拾遗/   # Literary works
-│   └── 司机呓语/        # Miscellaneous thoughts
-├── _layouts/            # HTML templates
-├── _includes/           # Reusable HTML components
-├── _data/               # Site data (navigation, social links)
-├── category/            # Generated category pages
-├── image/               # Image assets
-├── assets/css/          # Custom CSS
-└── scripts/             # Utility scripts
-```
+## Core Mandates
+
+1. **Custom Theme**: Keep the custom Hugo theme. Do **not** adopt a predefined Hugo theme as the implementation base.
+2. **Modern Visual Reference**: `/Users/administrator/work/5hows-site` is approved as a reference for modern design tokens, fixed translucent navigation, card systems, section rhythm, CTAs, and homepage information architecture. Borrow design thinking only; do not import Astro components, auth/i18n routing, API scripts, or runtime dependencies.
+3. **CJK Long-form Reading**: Preserve 北辕记's serif, publication-like Chinese article reading experience. The homepage and navigation may be modern/product-like; article bodies should remain optimized for sustained Chinese reading.
+4. **URL Preservation**: Old Jekyll URLs using `/:categories/:year/:month/:day/:title/` must remain available through aliases or redirects.
+5. **Content Integrity**: Do not rewrite migrated article meaning or prose unless explicitly requested.
 
 ## Building and Running
 
-### Local Development
 ```bash
-# Start Jekyll development server
-./scripts/server
-
-# Or directly with bundle
-bundle exec jekyll serve --trace
+hugo server --buildDrafts
+hugo --gc --minify
+hugo config
 ```
 
-### Building for Production
-```bash
-# Build the site
-bundle exec jekyll build
+Hugo v0.160.1 extended is the expected local version.
 
-# Build with future posts
-bundle exec jekyll build --future
-```
+## Verification Process
 
-### Category Page Generation
-```bash
-# Generate category pages (run when adding new categories)
-python generate_category_pages.py
-```
+There is no automated test suite. Before considering a change complete, verify:
 
-## Content Management
-
-### Adding New Posts
-1. Create markdown files in `_posts/` with proper naming convention: `YYYY-MM-DD-title.md`
-2. Include front matter with required metadata:
-```yaml
----
-layout: post
-title: "Post Title"
-category: 司机行记
-author: 北辕司机
-toc: true  # Optional: enable table of contents
----
-```
-
-### Categories
-The site supports the following categories defined in `_config.yml`:
-- 司机行记 (Travel notes)
-- 游戏与怪谈 (Games and strange tales)
-- 搬运旧闻-经济金融 (Economic/financial content)
-- 搬运旧闻-政治历史 (Political/historical content)
-- 搬运旧闻-学术杂谈 (Academic discussions)
-- 沙滩文学-拾遗 (Literary works)
-
-### Navigation
-Site navigation is configured in `_data/navigation.yml` and includes:
-- About page
-- Years archive
-- Categories
-- Tags
-- FAQ and Docs
+1. `hugo config` resolves without errors.
+2. `hugo --gc --minify` succeeds.
+3. Layout or navigation changes render correctly on affected page types.
+4. Search changes are followed by `public/search.json` generation and a rendered `/search/` smoke test.
+5. URL preservation changes are checked against representative aliases.
 
 ## Development Conventions
 
-### Content Style
-- Posts are written in Chinese (Simplified)
-- Use Markdown for content formatting
-- Include images in the `image/` directory
-- Posts should have meaningful front matter with proper categorization
+- Section directory names are singular and lowercase: `essay/`, `dialogue/`, `archive/`, `note/`, `series/`.
+- Only expose populated sections in primary navigation and homepage cards. At present, `dialogue/`, `note/`, and `series/` are model placeholders and should remain hidden until real entries exist.
+- Visible topics are durable problem domains, not old Jekyll source directories: `行旅与自省`, `技艺与现代性`, `文艺与审美`, `社会与制度`, `学术与思想`.
+- Old Jekyll categories should remain as URL history in `aliases`, not as new taxonomy drivers.
+- Content filenames use hyphens.
+- Front matter uses TOML unless explicitly changed.
+- Keep HTML/CSS semantic and lightweight.
+- Prefer progressive enhancement; add JavaScript only for concrete needs.
+- Do not claim CI/CD, migration, search, RSS, or deployment status unless it is verifiable in the repository or build output.
 
-### Theme Customization
-- The site uses the Hamilton theme via remote_theme
-- Custom CSS can be added to `assets/css/`
-- Layout overrides go in `_layouts/`
-- Component overrides go in `_includes/`
+## Key Files
 
-### Deployment
-- The site is automatically deployed to GitHub Pages
-- Push changes to the main branch to trigger deployment
-- No additional build steps required for GitHub Pages
-
-## Key Files for Development
-
-- `_config.yml` - Main configuration file
-- `Gemfile` - Ruby dependencies
-- `generate_category_pages.py` - Script for generating category pages
-- `scripts/server` - Development server script
-- `_layouts/home.html` - Homepage layout
-- `_data/navigation.yml` - Navigation structure
-
-## Recent Changes
-
-### Search Functionality (Jan 2026)
-- Enhanced search with XSS protection and improved snippet highlighting in `search.html`.
-- Addressed limitations regarding Unicode case folding, HTML special characters in queries, and URL safety.
-- *Note: Future improvements could include stricter URL validation and indexing for performance.*
-
-### Content Updates
-- Debugging and fixes for post: `2026-01-06-年终总结，或走出北欧后的自我批判.md`.
-
-## TODO Items
-
-- [x] Configure RSS feed if not already present
-- [x] RSS tutorial page for normal new reader
-- [ ] Set up proper SEO meta tags
-- [x] Add search functionality
-- [x] Implement comment system (utterances)
-
-This GEMINI.md file provides the essential context for working with this Jekyll-based personal blog project.
+- `workplan.md`: authoritative migration phases, design decisions, blockers, and acceptance criteria.
+- `CLAUDE.md`: detailed working guidance for future agent sessions.
+- `hugo.toml`: Hugo configuration, menus, taxonomies, and outputs.
+- `themes/beiyuanji/`: active custom theme implementation.
+- `themes/beiyuanji/layouts/index.searchindex.json`: Hugo-generated `/search.json` index for client-side search.
+- `content/`: migrated content tree.
+- `scripts/migrate.py`: Jekyll-to-Hugo migration baseline.
+- `.github/workflows/hugo.yml`: GitHub Pages build/deploy flow.

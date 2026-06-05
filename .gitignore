@@ -1,12 +1,22 @@
-*.gem
-.bundle
-.jekyll-cache
-.sass-cache
-_site
-Gemfile.lock
-./_drafts/*
+# Hugo build output
+public/
+resources/_gen/
 
-# AI 编程工具目录
+# Hugo lock
+.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Local agent / project tooling
 .claude/
 .codebuddy/
 openspec/

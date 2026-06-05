@@ -1,0 +1,32 @@
+{{ define "main" }}
+  <article>
+    <header class="article-header">
+      <h1>{{ .Title }}</h1>
+      <div class="article-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{ with .Params.original_date }}
+          <span class="meta-sep">·</span> 原作 <time>{{ . }}</time>
+        {{ end }}
+        {{ with .Lastmod }}
+          {{ if not (eq ($.Date.Format "2006-01-02") (.Format "2006-01-02")) }}
+            <span class="meta-sep">·</span> 修订 <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+          {{ end }}
+        {{ end }}
+        {{ with .Params.topics }}
+          <span class="meta-sep">·</span> {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ printf "/topics/%s/" $t | relURL }}">{{ $t }}</a>{{ end }}
+        {{ end }}
+      </div>
+    </header>
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+    <footer class="article-footer">
+      <div class="article-cite">
+        <details>
+          <summary>引用本文</summary>
+          <p class="cite-text">{{ .Title }}. 北辕记, {{ .Date.Format "2006" }}. {{ .Permalink }}</p>
+        </details>
+      </div>
+    </footer>
+  </article>
+{{ end }}
