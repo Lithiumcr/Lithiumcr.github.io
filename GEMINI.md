@@ -43,11 +43,11 @@ There is no automated test suite. Before considering a change complete, verify:
 
 ## Development Conventions
 
-- Section directory names are singular and lowercase: `essay/`, `dialogue/`, `archive/`, `note/`, `series/`.
-- Only expose populated sections in primary navigation and homepage cards. At present, `dialogue/`, `note/`, and `series/` are model placeholders and should remain hidden until real entries exist.
-- Visible topics are durable problem domains, not old Jekyll source directories: `行旅与自省`, `技艺与现代性`, `文艺与审美`, `社会与制度`, `学术与思想`.
-- Old Jekyll categories should remain as URL history in `aliases`, not as new taxonomy drivers.
-- Content filenames use hyphens.
+- Physical article storage follows the old Jekyll source directories for maintainability: `司机呓语/`, `司机行记/`, `沙滩文学-拾遗/`, `游戏与怪谈/`, `搬运旧闻-学术杂谈/`, `搬运旧闻-政治历史/`, `搬运旧闻-经济金融/`.
+- Logical site sections are controlled by front matter `type`, not physical directory names: `type = 'essay'` for original writing and `type = 'archive'` for curated/reposted material.
+- Canonical URLs for moved articles must stay fixed through front matter `url`; old Jekyll URLs remain preserved through `aliases`.
+- Visible topics are durable problem domains, not old Jekyll source directories: `行旅与自省`, `技艺与现代性`, `文艺与审美`, `社会与制度`, `学术与思想`, `诗歌`.
+- Content filenames may preserve readable Chinese titles when migrated from the old site.
 - Front matter uses TOML unless explicitly changed.
 - Keep HTML/CSS semantic and lightweight.
 - Prefer progressive enhancement; add JavaScript only for concrete needs.

@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body data-section="{{ .Section }}" data-kind="{{ .Kind }}"{{ if .IsHome }} data-home{{ end }}>
+<body data-section="{{ or .Type .Section }}" data-kind="{{ .Kind }}"{{ if .IsHome }} data-home{{ end }}>
   <header class="site-header">
     {{ partial "header.html" . }}
   </header>

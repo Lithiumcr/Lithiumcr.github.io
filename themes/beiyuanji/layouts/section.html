@@ -5,6 +5,9 @@
   </div>
   {{ .Content }}
   {{ $pages := .Pages }}
+  {{ if or (eq .Section "essay") (eq .Section "archive") }}
+    {{ $pages = where site.RegularPages "Type" .Section }}
+  {{ end }}
   {{ if $pages }}
     <ul class="post-list">
       {{ range $pages.ByDate.Reverse }}
