@@ -11,8 +11,8 @@ Beiyuanji (北辕记) is a Chinese-language intellectual blog migrated from Jeky
 - **Site URL**: `https://lithiumcr.github.io/`
 - **Repository**: `/Users/administrator/work/Lithiumcr.github.io/`
 - **Source archive / staging reference**: `/Users/administrator/work/beiyuanji-hugo/`
-- **Scale**: 83 legacy URL aliases preserved; latest audited Hugo build renders 108 pages and 51 static files
-- **Migrated content present**: 55 essays and 30 archives, plus standalone pages (`search`, `subscribe`, `cite`); the placeholder `about` page has been removed; `dialogue`, `note`, and `series` currently contain only index placeholders
+- **Scale**: 83 legacy URL aliases preserved; latest audited Hugo build renders 118 pages and 51 static files after restoring legacy physical content directories
+- **Migrated content present**: 55 essays and 30 archives stored under the old Jekyll source directories, plus standalone pages (`search`, `subscribe`, `cite`); empty placeholder sections (`dialogue`, `note`, `series`) have been removed
 - **Display typography**: homepage hero title uses a self-hosted Liu Jian Mao Cao / 刘建毛草 subset font at `static/fonts/liu-jian-mao-cao-hero-subset.ttf`; update the subset if the title/axiom text introduces new Chinese characters.
 
 If this file conflicts with `workplan.md`, treat `workplan.md` as the authoritative source.
@@ -63,7 +63,7 @@ Current known state:
 
 - `hugo.toml` is configured for `zh-CN`, `Asia/Shanghai`, custom taxonomies, RSS outputs, and theme `beiyuanji`
 - `themes/beiyuanji/` contains the active layouts, partials, and styles
-- `content/` contains migrated sections (`essay`, `archive`, `dialogue`, `note`, `series`) plus standalone pages
+- `content/` stores migrated articles under legacy physical directories while front matter `type` controls logical sections (`essay` / `archive`); standalone pages remain at the content root
 - `scripts/migrate.py` exists for Jekyll -> Hugo migration
 - `themes/beiyuanji/layouts/index.searchindex.json` generates `/search.json` for client-side search
 - there is no automated test suite
@@ -112,14 +112,21 @@ Treat any regression in build, deployment, search/RSS, or URL preservation as re
 
 The content model defined in `workplan.md` is already present.
 
-Core sections:
+Logical content sections:
 
-- `essay/`
-- `dialogue/`
-- `archive/`
-- `note/`
-- `series/`
+- `essay`: original writing, identified by `type = "essay"`
+- `archive`: curated/reposted material, identified by `type = "archive"`
 - standalone pages in `content/` root
+
+Physical article directories follow the old Jekyll source categories for human maintainability:
+
+- `司机呓语/`
+- `司机行记/`
+- `沙滩文学-拾遗/`
+- `游戏与怪谈/`
+- `搬运旧闻-学术杂谈/`
+- `搬运旧闻-政治历史/`
+- `搬运旧闻-经济金融/`
 
 Taxonomies:
 
@@ -159,7 +166,8 @@ Do not reopen completed phases without a concrete bug, regression, or explicit u
 The visible classification system is intentionally smaller than the old Jekyll category tree.
 
 - **Sections describe content form**: `essay` for original writing; `archive` for reprints, curated materials, interviews, and historical records.
-- **Empty future sections stay hidden from primary navigation**: `dialogue`, `note`, and `series` exist in the model but currently contain only index pages, so do not expose them as main navigation or homepage cards until real entries exist.
+- **Empty future sections should not be kept as blank content directories**: create `dialogue` or `note` content only when real entries exist.
+- **Old Jekyll directories are physical storage aids**, not taxonomy drivers; article listing, search, styling, and canonical URLs should rely on front matter `type` and `url`.
 - **Topics describe durable problem domains**, not old source directories:
   - `行旅与自省`
   - `技艺与现代性`
@@ -200,8 +208,8 @@ If a task changes layout or navigation, verify the relevant rendered pages inste
 
 ## Working Conventions
 
-- Section directory names are **singular, lowercase**
-- Content filenames use **hyphens**
+- Physical article directories preserve old Jekyll categories for maintainability; do not infer logical site sections from directory names
+- `type` controls logical section behavior; `url` preserves canonical URLs when files move
 - Front matter uses **TOML** unless the user explicitly changes the convention
 - Keep HTML/CSS minimal and semantic
 - Prefer progressive enhancement; add JS only when it solves a real need
