@@ -1,0 +1,14 @@
+[
+{{- $pages := where site.RegularPages "Type" "in" (slice "essay" "archive" "dialogue" "note") -}}
+{{- range $index, $page := $pages.ByDate.Reverse }}
+  {{- if $index }},{{ end }}
+  {
+    "title": {{ $page.Title | jsonify }},
+    "url": {{ $page.RelPermalink | jsonify }},
+    "date": {{ $page.Date.Format "2006-01-02" | jsonify }},
+    "type": {{ $page.Type | jsonify }},
+    "summary": {{ with $page.Params.summary }}{{ . | plainify | jsonify }}{{ else }}{{ $page.Summary | plainify | jsonify }}{{ end }},
+    "content": {{ $page.Plain | jsonify }}
+  }
+{{- end }}
+]

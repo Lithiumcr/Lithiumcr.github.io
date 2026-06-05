@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ or site.Language.LanguageCode site.Language.Locale `zh-CN` }}" dir="{{ or site.Language.Direction `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body data-section="{{ .Section }}" data-kind="{{ .Kind }}"{{ if .IsHome }} data-home{{ end }}>
+  <header class="site-header">
+    {{ partial "header.html" . }}
+  </header>
+  <main class="site-main{{ if .IsHome }} site-main--home{{ else if .IsPage }} site-main--article{{ else }} site-main--page{{ end }}">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    {{ partial "footer.html" . }}
+  </footer>
+</body>
+</html>

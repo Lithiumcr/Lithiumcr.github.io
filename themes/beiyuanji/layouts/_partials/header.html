@@ -1,0 +1,7 @@
+<div class="nav__inner">
+  <a href="{{ site.Home.RelPermalink }}" class="nav__brand" aria-label="{{ site.Title }} 首页">
+    <span class="nav__logo">{{ site.Title }}</span>
+    <span class="nav__tagline">旧学新声与人文行旅</span>
+  </a>
+  {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>

@@ -1,0 +1,109 @@
+{{ define "main" }}
+  <div class="page-header">
+    <h1>{{ .Title }}</h1>
+  </div>
+
+  <div class="search-box">
+    <input type="search" id="search-input" class="search-input" placeholder="输入关键词即可搜索文章…" autocomplete="off" aria-label="站内搜索">
+  </div>
+  <div id="search-status" class="search-status">搜索会匹配标题与正文内容。</div>
+  <div id="search-results" class="search-results"></div>
+
+  <script>
+    (function () {
+      var posts = [];
+      var searchInput = document.getElementById('search-input');
+      var searchStatus = document.getElementById('search-status');
+      var searchResults = document.getElementById('search-results');
+
+      function escapeHtml(value) {
+        if (!value && value !== 0) return '';
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      function makeSnippet(content, query) {
+        if (!content) return '';
+        var lowerContent = content.toLowerCase();
+        var index = lowerContent.indexOf(query);
+        if (index === -1) index = 0;
+        var start = Math.max(0, index - 60);
+        var end = Math.min(content.length, index + 160);
+        var snippet = content.substring(start, end);
+        if (start > 0) snippet = '…' + snippet;
+        if (end < content.length) snippet += '…';
+        var safeSnippet = escapeHtml(snippet);
+        return safeSnippet.replace(new RegExp(escapeRegExp(query), 'gi'), function (match) {
+          return '<mark>' + match + '</mark>';
+        });
+      }
+
+      function render(results, query) {
+        if (!query) {
+          searchStatus.textContent = '搜索会匹配标题与正文内容。';
+          searchResults.innerHTML = '';
+          return;
+        }
+
+        if (!results.length) {
+          searchStatus.textContent = '没有找到相关文章。';
+          searchResults.innerHTML = '';
+          return;
+        }
+
+        searchStatus.textContent = '找到 ' + results.length + ' 条结果。';
+        searchResults.innerHTML = results.map(function (post) {
+          var title = escapeHtml(post.title || '未命名');
+          var url = escapeHtml(post.url || '#');
+          var date = escapeHtml(post.date || '');
+          var type = escapeHtml(post.type || '');
+          var snippet = makeSnippet(post.content || post.summary || '', query);
+
+          return '<article class="search-result-item">'
+            + '<h2 class="search-result-title"><a href="' + url + '">' + title + '</a></h2>'
+            + '<div class="search-result-meta">' + date + (type ? ' · ' + type : '') + '</div>'
+            + '<p class="search-result-snippet">' + snippet + '</p>'
+            + '</article>';
+        }).join('');
+      }
+
+      function runSearch() {
+        var query = searchInput.value.toLowerCase().trim();
+        if (!query) {
+          render([], '');
+          return;
+        }
+
+        var results = posts.filter(function (post) {
+          var title = (post.title || '').toLowerCase();
+          var content = (post.content || '').toLowerCase();
+          return title.indexOf(query) !== -1 || content.indexOf(query) !== -1;
+        });
+        render(results, query);
+      }
+
+      fetch('/search.json')
+        .then(function (response) {
+          if (!response.ok) throw new Error('Search index unavailable');
+          return response.json();
+        })
+        .then(function (data) {
+          posts = Array.isArray(data) ? data : [];
+          searchInput.addEventListener('input', runSearch);
+          searchInput.disabled = false;
+        })
+        .catch(function () {
+          searchInput.disabled = true;
+          searchStatus.textContent = '搜索索引暂不可用，请稍后再试。';
+        });
+    }());
+  </script>
+{{ end }}
