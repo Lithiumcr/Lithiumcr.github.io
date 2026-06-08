@@ -9,7 +9,7 @@
 
 - Hugo build passes locally with `hugo --gc --minify` on Hugo v0.160.1 from `/Users/administrator/work/Lithiumcr.github.io/` after the source cutover.
 - Latest audited build output after content directory cleanup: 118 pages, 51 static files, 83 aliases.
-- Migrated content present in repository: 55 essay files and 30 archive files stored under the old Jekyll physical source directories, plus standalone pages (`search`, `subscribe`, `cite`). The placeholder `about` page and empty future section placeholders (`dialogue`, `note`, `series`) have been removed.
+- Migrated content present in repository: 54 essay files and 29 archive files stored under the old Jekyll physical source directories, plus standalone pages (`search`, `subscribe`, `cite`). The placeholder `about` page and empty future section placeholders (`dialogue`, `note`, `series`) have been removed.
 - Search now follows the old site's static `search.json` model: Hugo generates `/search.json` via `themes/beiyuanji/layouts/index.searchindex.json`, and `/search/` performs client-side title/body filtering.
 - Deployment strategy is now **Plan B**: keep `/Users/administrator/work/Lithiumcr.github.io/.git`, use `master` as the default source branch, store Hugo source in the repository root, and let GitHub Actions build Hugo and deploy GitHub Pages artifacts.
 - Cutover work is staged on `hugo-cutover-2026-06`; merging to `master` and verifying GitHub Pages Actions deployment remain release blockers.
@@ -309,7 +309,7 @@ Reference policy: `/Users/administrator/work/5hows-site` may be used as a visual
 | 1: Archive old site | Done | Tag, archive branch, static snapshot, and URL inventory documented |
 | 2: New site skeleton | Done | Theme, layouts, config, local build, master-based Actions workflow, and GitHub Pages deployment are verified |
 | 3: Content model | Done | Logical `type` sections, physical legacy directories, taxonomies, archetypes, and taxonomy templates complete |
-| 4: Content migration | Substantially done | 83 aliases generated, 55 essays + 30 archives stored under legacy physical directories; online CJK alias smoke test passed |
+| 4: Content migration | Substantially done | 83 aliases generated, 54 essays + 29 archives stored under legacy physical directories; online CJK alias smoke test passed |
 | 5: Search & subscription | Deployed and working | RSS and `/search.json` build locally and respond online; `/search/` is deployed |
 | 6: Home & curation | Structure + visual refresh done | Home structure, 3 featured works, and 5hows-inspired modern visual system complete; topic introductions / reading order pending |
 | 7: Citability | Core done | Anchors, citation block, policy page complete; archive statement and deeper deployed rendering review pending |

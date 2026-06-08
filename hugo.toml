@@ -12,9 +12,10 @@ summaryLength = 120
 hasCJKLanguage = true
 
 # Taxonomies
+# Note: `series = 'series'` is intentionally disabled while no article uses it,
+# to avoid generating an empty `/series/` page. Re-enable when real series exist.
 [taxonomies]
   topic = 'topics'
-  series = 'series'
   person = 'people'
   keyword = 'keywords'
 

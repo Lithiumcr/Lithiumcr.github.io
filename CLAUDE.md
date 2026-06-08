@@ -12,7 +12,7 @@ Beiyuanji (北辕记) is a Chinese-language intellectual blog migrated from Jeky
 - **Repository**: `/Users/administrator/work/Lithiumcr.github.io/`
 - **Source archive / staging reference**: `/Users/administrator/work/beiyuanji-hugo/`
 - **Scale**: 83 legacy URL aliases preserved; latest audited Hugo build renders 118 pages and 51 static files after restoring legacy physical content directories
-- **Migrated content present**: 55 essays and 30 archives stored under the old Jekyll source directories, plus standalone pages (`search`, `subscribe`, `cite`); empty placeholder sections (`dialogue`, `note`, `series`) have been removed
+- **Migrated content present**: 54 essays and 29 archives stored under the old Jekyll source directories, plus standalone pages (`search`, `subscribe`, `cite`); empty placeholder sections (`dialogue`, `note`, `series`) have been removed
 - **Display typography**: homepage hero title uses a self-hosted Liu Jian Mao Cao / 刘建毛草 subset font at `static/fonts/liu-jian-mao-cao-hero-subset.ttf`; update the subset if the title/axiom text introduces new Chinese characters.
 
 If this file conflicts with `workplan.md`, treat `workplan.md` as the authoritative source.
@@ -144,7 +144,7 @@ Do not invent additional core content types unless the user requests them.
 
 Already implemented in repository:
 
-- batch migration from old Jekyll posts via `scripts/migrate.py` (85 migrated articles currently present as 55 essays + 30 archives)
+- batch migration from old Jekyll posts via `scripts/migrate.py` (83 migrated articles currently present as 54 essays + 29 archives)
 - old URL preservation through front matter `aliases` (83 aliases generated in latest build)
 - search UI with old-site-style static `/search.json` index and client-side title/body filtering
 - RSS / subscription pages and templates (custom `rss.xml`, full content in `content:encoded`, `/subscribe/` page)

@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ $articles := where site.RegularPages "Type" "in" (slice "essay" "archive" "dialogue" "note") }}
+  {{ $articles := where site.RegularPages "Type" "in" (slice "essay" "archive") }}
   {{ $archives := where site.RegularPages "Type" "archive" }}
   {{ $featured := first 3 (where site.RegularPages ".Params.featured" true) }}
   {{ $recent := first 8 ($articles.ByDate.Reverse) }}

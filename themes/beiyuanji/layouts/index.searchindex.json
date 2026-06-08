@@ -1,5 +1,5 @@
 [
-{{- $pages := where site.RegularPages "Type" "in" (slice "essay" "archive" "dialogue" "note") -}}
+{{- $pages := where site.RegularPages "Type" "in" (slice "essay" "archive") -}}
 {{- range $index, $page := $pages.ByDate.Reverse }}
   {{- if $index }},{{ end }}
   {
