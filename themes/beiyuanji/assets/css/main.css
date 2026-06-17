@@ -260,8 +260,7 @@ a:hover {
   transform: translateY(-1px);
 }
 
--.article-nav__item--older {
-+.article-nav__item--newer {
+.article-nav__item--newer {
   text-align: right;
 }
 
