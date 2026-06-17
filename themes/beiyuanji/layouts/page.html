@@ -1,10 +1,67 @@
 {{ define "main" }}
+  {{ $pages := where site.RegularPages "Type" .Type }}
+  {{ $sortedPages := $pages.ByDate.Reverse }}
+  {{ $currentIndex := -1 }}
+  {{ range $i, $page := $sortedPages }}
+    {{ if eq $page.RelPermalink $.RelPermalink }}
+      {{ $currentIndex = $i }}
+    {{ end }}
+  {{ end }}
+  {{ $nav := newScratch }}
+  {{ if ge $currentIndex 0 }}
+    {{ if gt $currentIndex 0 }}
+      {{ $nav.Set "newer" (index $sortedPages (sub $currentIndex 1)) }}
+    {{ end }}
+    {{ if lt (add $currentIndex 1) (len $sortedPages) }}
+      {{ $nav.Set "older" (index $sortedPages (add $currentIndex 1)) }}
+    {{ end }}
+  {{ end }}
+  {{ $newer := $nav.Get "newer" }}
+  {{ $older := $nav.Get "older" }}
   <article>
     <header class="article-header">
       <h1>{{ .Title }}</h1>
+      <div class="article-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{ with .Params.original_date }}
+          <span class="meta-sep">·</span> 原作 <time>{{ . }}</time>
+        {{ end }}
+        {{ with .Lastmod }}
+          {{ if not (eq ($.Date.Format "2006-01-02") (.Format "2006-01-02")) }}
+            <span class="meta-sep">·</span> 修订 <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+          {{ end }}
+        {{ end }}
+        {{ with .Params.topics }}
+          <span class="meta-sep">·</span> {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ printf "/topics/%s/" $t | relURL }}">{{ $t }}</a>{{ end }}
+        {{ end }}
+      </div>
     </header>
     <div class="article-content">
       {{ .Content }}
     </div>
+    {{ if or $newer $older }}
+      <nav class="article-nav" aria-label="文章导航">
+        {{ with $older }}
+          <a class="article-nav__item article-nav__item--older" href="{{ .RelPermalink }}">
+            <span class="article-nav__label">较旧一篇</span>
+            <span class="article-nav__title">{{ .Title }}</span>
+          </a>
+        {{ end }}
+        {{ with $newer }}
+          <a class="article-nav__item article-nav__item--newer" href="{{ .RelPermalink }}">
+            <span class="article-nav__label">较新一篇</span>
+            <span class="article-nav__title">{{ .Title }}</span>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
+    <footer class="article-footer">
+      <div class="article-cite">
+        <details>
+          <summary>引用本文</summary>
+          <p class="cite-text">{{ .Title }}. 北辕记, {{ .Date.Format "2006" }}. {{ .Permalink }}</p>
+        </details>
+      </div>
+    </footer>
   </article>
 {{ end }}

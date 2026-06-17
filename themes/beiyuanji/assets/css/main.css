@@ -233,6 +233,51 @@ a:hover {
 }
 
 /* --- Article Footer & Citation --- */
+.article-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.article-nav__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg-alt);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.article-nav__item:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-bg-alt) 84%, var(--color-accent) 16%);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+-.article-nav__item--older {
++.article-nav__item--newer {
+  text-align: right;
+}
+
+.article-nav__label {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.article-nav__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
 .article-footer {
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -1656,6 +1701,15 @@ body[data-section="essay"] .article-header h1 {
 @media (max-width: 700px) {
   :root {
     --side-padding: 1rem;
+  }
+
+  .article-nav {
+    grid-template-columns: 1fr;
+  }
+
+-  .article-nav__item--older {
++  .article-nav__item--newer {
+    text-align: left;
   }
 
   .nav__tagline {
