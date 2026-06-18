@@ -996,7 +996,7 @@ a:hover {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 64px 0;
 }
 
 .section--alt {
@@ -1005,7 +1005,7 @@ a:hover {
 
 .section--dark {
   margin-top: 0;
-  padding: 72px 0;
+  padding: 60px 0;
   background: var(--color-text);
   color: rgba(255, 255, 255, 0.88);
 }
@@ -1035,18 +1035,45 @@ a:hover {
 
 .section-desc-large {
   max-width: 640px;
-  margin: 12px 0 32px;
+  margin: 10px 0 24px;
   color: var(--color-text-secondary);
   font-size: 16px;
   line-height: 1.8;
 }
 
 .home-hero {
-  padding: 80px 0 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 64px 0 0;
+  border-bottom: 0;
   background:
     radial-gradient(circle at 85% 15%, rgba(17, 24, 39, 0.08), transparent 30%),
     linear-gradient(180deg, #fff 0%, var(--color-bg) 100%);
+}
+
+.featured-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.featured-intro__logo {
+  display: block;
+  justify-self: end;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.featured-intro__body {
+  min-width: 0;
+  text-align: left;
+}
+
+.featured-intro__body .section-desc-large {
+  margin-bottom: 0;
 }
 
 .hero__badge {
@@ -1179,33 +1206,6 @@ a:hover {
   height: 40px;
   margin-right: 32px;
   background: var(--color-border);
-}
-
-.hero__axiom {
-  margin-top: 48px;
-  padding: 16px 0;
-  border-top: 1px solid var(--color-border);
-  background: var(--color-border-subtle);
-}
-
-.hero__axiom .container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.axiom-label {
-  flex-shrink: 0;
-  color: var(--color-text-muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-}
-
-.axiom-text {
-  color: var(--color-text-secondary);
-  font-size: 14px;
-  font-weight: 500;
 }
 
 .featured-grid {
@@ -1874,11 +1874,11 @@ body[data-section="essay"] .article-header h1 {
   }
 
   .section {
-    padding: 56px 0;
+    padding: 44px 0;
   }
 
   .home-hero {
-    padding-top: 56px;
+    padding-top: 48px;
   }
 
   .hero__title {
@@ -1899,9 +1899,17 @@ body[data-section="essay"] .article-header h1 {
     display: none;
   }
 
-  .hero__axiom .container {
-    align-items: flex-start;
-    flex-direction: column;
+  .featured-intro {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .featured-intro__logo {
+    justify-self: start;
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
   }
 
   .featured-grid,

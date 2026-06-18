@@ -16,37 +16,20 @@
         <a href="/essay/" class="btn btn--primary">开始阅读</a>
         <a href="/topics/" class="btn btn--secondary">浏览专题</a>
       </div>
-      <div class="hero__stats" aria-label="站点内容概览">
-        <div class="stat">
-          <div class="stat__num">{{ len $articles }}</div>
-          <div class="stat__label">篇文章</div>
-        </div>
-        <div class="stat__divider"></div>
-        <div class="stat">
-          <div class="stat__num">{{ $topicCount }}</div>
-          <div class="stat__label">个专题</div>
-        </div>
-        <div class="stat__divider"></div>
-        <div class="stat">
-          <div class="stat__num">{{ len $archives }}</div>
-          <div class="stat__label">则旧闻辑录</div>
-        </div>
-      </div>
-    </div>
-    <div class="hero__axiom">
-      <div class="container">
-        <span class="axiom-label">PURSUIT</span>
-        <span class="axiom-text">旧学新声，贯通中西；以个人经验照见时代褶皱。</span>
-      </div>
     </div>
   </section>
 
   {{ if $featured }}
   <section class="section">
     <div class="container">
-      <p class="section-title">Featured Works</p>
-      <h2 class="section-heading">代表作</h2>
-      <p class="section-desc-large">飘飘何所似，天地一沙鸥</p>
+      <div class="featured-intro">
+        <div class="featured-intro__body">
+          <p class="section-title">Featured Works</p>
+          <h2 class="section-heading">代表作</h2>
+          <p class="section-desc-large">飘飘何所似，天地一沙鸥</p>
+        </div>
+        <img src="/image/logo.png" alt="北辕记 logo" class="featured-intro__logo">
+      </div>
       <div class="featured-grid">
         {{ range $featured }}
           <a href="{{ .RelPermalink }}" class="feature-card">
@@ -102,11 +85,22 @@
           <span class="section-name">旧闻</span>
           <span class="section-desc">转载、摘编、访谈与史料整理</span>
         </a>
-        <a href="/friends/" class="section-card">
-          <span class="section-card__label">Friends</span>
-          <span class="section-name">友链</span>
-          <span class="section-desc">查看已收录站点，亦可了解基本流程</span>
-        </a>
+      </div>
+      <div class="hero__stats" aria-label="站点内容概览">
+        <div class="stat">
+          <div class="stat__num">{{ $topicCount }}</div>
+          <div class="stat__label">个专题</div>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <div class="stat__num">{{ len $articles }}</div>
+          <div class="stat__label">篇文章</div>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <div class="stat__num">{{ len $archives }}</div>
+          <div class="stat__label">则旧闻辑录</div>
+        </div>
       </div>
     </div>
   </section>
