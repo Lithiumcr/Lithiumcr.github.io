@@ -1,0 +1,20 @@
+sections:
+  - key: friends
+    title: "友情链接"
+    eyebrow: "Friend Links"
+    description: "推荐算法辖区之外，独立站之间的互相指认"
+    items:
+      - name: "西门美月匈XD"
+        url: "https://xmmxovo.online/"
+        description: "一定会成为一个很棒的大人！"
+        imageUrl: "https://xmmxovo.online/images/avatar.png"
+
+      - name: "TorchMar's Blog"
+        url: "https://torchmar.github.io/"
+        description: "Always exploring, always learning."
+        imageUrl: "https://torchmar.github.io/images/Ray.jpg"
+
+      - name: "Yu Zhang"
+        url: "https://yuzhang.net/"
+        description: "An expert in doing nothing"
+        imageUrl: "https://cdn.jsdelivr.net/gh/yuzhangnju/image2022/image-20231113210216310.png"

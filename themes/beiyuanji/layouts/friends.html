@@ -1,0 +1,67 @@
+{{ define "main" }}
+  {{ $sections := hugo.Data.friends.sections }}
+  <article>
+    <header class="article-header">
+      <h1>{{ .Title }}</h1>
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+    </header>
+
+    {{ range $section := $sections }}
+      <section class="friends-section">
+        <div class="friends-section__header">
+          <p class="section-title">{{ $section.eyebrow }}</p>
+          <h2 class="section-heading">{{ $section.title }}</h2>
+          <p class="section-desc-large">{{ $section.description }}</p>
+        </div>
+        <div class="friends-grid" data-columns="2">
+          {{ range $friend := $section.items }}
+            <a href="{{ $friend.url }}" class="friend-card" target="_blank" rel="noopener noreferrer">
+              <div class="friend-card__head">
+                {{ with $friend.imageUrl }}
+                  <img class="friend-card__avatar" src="{{ . }}" alt="{{ $friend.name }} avatar" loading="lazy">
+                {{ end }}
+                <div class="friend-card__main">
+                  <h3 class="friend-card__title">{{ $friend.name }}</h3>
+                  <p class="friend-card__url">{{ $friend.url }}</p>
+                </div>
+              </div>
+              <p class="friend-card__desc">{{ $friend.description }}</p>
+              <span class="friend-card__arrow">访问站点 →</span>
+            </a>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    <section class="friends-section friends-section--guide">
+      <p class="section-title">Apply</p>
+      <h2 class="section-heading">如何申请</h2>
+      <div class="article-content">
+        <p>请按以下格式提供站点信息，并通过 issue 提交。</p>
+<pre><code class="language-yaml">- name: "你的博客名称"
+  url: "https://your-blog.com"
+  description: "一句话介绍你的博客，建议 20-50 字"
+  imageUrl: "https://your-blog.com/avatar.png"</code></pre>
+        <table>
+          <thead>
+            <tr><th>字段</th><th>说明</th><th>是否必填</th><th>要求</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>name</strong></td><td>博客名称或昵称</td><td>必填</td><td>建议不超过 15 字</td></tr>
+            <tr><td><strong>url</strong></td><td>博客主页链接</td><td>必填</td><td>应包含 <code>https://</code>，且可正常访问</td></tr>
+            <tr><td><strong>description</strong></td><td>一句话简介</td><td>必填</td><td>尽量在 50 字以内说清内容方向</td></tr>
+            <tr><td><strong>imageUrl</strong></td><td>头像或 Logo</td><td>选填</td><td>建议为正方形图片</td></tr>
+          </tbody>
+        </table>
+        <p>目前优先接受原创内容为主、站点可稳定访问的个人博客。互链不是强制，但会优先处理。</p>
+        <h3>本站友链信息</h3>
+<pre><code class="language-yaml">- name: "北辕记"
+  url: "https://lithiumcr.github.io"
+  description: "北辕司机的个人博客，记录思考、诗歌、还有一路向北的歧途风光"
+  imageUrl: "https://lithiumcr.github.io/image/avatar.jpg"</code></pre>
+      </div>
+    </section>
+  </article>
+{{ end }}

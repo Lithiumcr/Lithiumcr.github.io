@@ -38,6 +38,10 @@ hasCJKLanguage = true
     pageRef = '/topics/'
     weight = 40
   [[menus.main]]
+    name = '友链'
+    pageRef = '/friends/'
+    weight = 70
+  [[menus.main]]
     name = '订阅'
     pageRef = '/subscribe/'
     weight = 80
