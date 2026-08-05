@@ -1,5 +1,5 @@
 +++
-title = '放弃也是答案：关于 AI 应用探索的一点想法'
+title = '放下也是答案：关于 AI 应用探索的一点想法'
 date = 2026-07-21
 draft = false
 type = 'essay'
