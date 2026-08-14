@@ -1504,6 +1504,20 @@ body[data-section="essay"] .article-header h1 {
   line-height: 1.25;
 }
 
+.article-subtitle {
+  margin: 0.7rem 0 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.55;
+}
+
+.article-meta {
+  margin-top: 1rem;
+}
+
 .article-meta,
 .post-meta {
   font-family: var(--font-sans);

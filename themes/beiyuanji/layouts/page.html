@@ -21,6 +21,9 @@
   <article>
     <header class="article-header">
       <h1>{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+        <p class="article-subtitle">{{ . }}</p>
+      {{ end }}
       <div class="article-meta">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
         {{ with .Params.original_date }}
