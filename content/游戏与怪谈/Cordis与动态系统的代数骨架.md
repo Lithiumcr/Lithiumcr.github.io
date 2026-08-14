@@ -4,8 +4,8 @@ date = 2026-08-14
 draft = false
 type = 'essay'
 summary = '从 Agent harness 的热潮出发，重读 Cordis 论文真正要解决的问题：动态系统如何在组件来去之间仍然保持可组合、可撤销、可解释。'
-topics = ['AI Infra', '程序语言', '系统工程']
-keywords = ['Cordis', 'Agent Harness', '范畴论', '动态组合', '推荐系统', 'HPC', '量子计算']
+topics = ['学术与思想']
+keywords = ['AI Infra', 'Agent', 'Harness', '范畴论', '系统工程', 'HPC']
 +++
 
 DeepSeek Harness（简称 dsh）一经发布，旋即议论纷纷。不过关注我的读者，应该不会止于表面的粉黑噪声，或者最新版模型权重打榜又刷了几个点，还是更想听些真有价值、且能经得住历史考验的信息。
