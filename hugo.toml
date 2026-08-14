@@ -66,10 +66,11 @@ hasCJKLanguage = true
       enable = true
       eastAsianLineBreaks = true
       escapedSpace = true
-  [markup.goldmark.passthrough]
-    enable = true
-    block = ['\[', '\]']
-    inline = ['$', '$']
+    [markup.goldmark.extensions.passthrough]
+      enable = true
+      [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)']]
   [markup.highlight]
     noClasses = false
 
