@@ -61,11 +61,15 @@ hasCJKLanguage = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.cjk]
-        enable = true
-        eastAsianLineBreaks = true
-        escapedSpace = true
+  [markup.goldmark.extensions]
+    [markup.goldmark.extensions.cjk]
+      enable = true
+      eastAsianLineBreaks = true
+      escapedSpace = true
+  [markup.goldmark.passthrough]
+    enable = true
+    block = ['\[', '\]']
+    inline = ['$', '$']
   [markup.highlight]
     noClasses = false
 

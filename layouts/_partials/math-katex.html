@@ -1,0 +1,7 @@
+{{/* layouts/_partials/math-katex.html
+     北辕记博客：全局注入 KaTeX，渲染文章中的 LaTeX 数学公式（如 Cordis essay）。
+     KaTeX auto-render 只处理含定界符的页面，无公式页面零渲染开销。
+     Author: OctavianLi */}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
